@@ -79,7 +79,7 @@ export function Loader() {
           aria-hidden="true"
         >
           <div className="grid justify-items-center gap-6 px-6 text-center">
-            <RoseCafeBadge size={104} tone="gold" />
+            <RoseCafeBadge size={104} tone="gold" className="rounded-[22%] shadow-[0_0_60px_-10px_rgba(201,164,99,.55)]" />
             <div className="sr-only">ROSE CAFÉ — Bremen</div>
             <div className="mt-2 h-px w-[min(46vw,220px)] overflow-hidden bg-white/12">
               <motion.div

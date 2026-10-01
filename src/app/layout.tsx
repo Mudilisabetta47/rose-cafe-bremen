@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   description:
     'Rose Café in Bremen-Schwachhausen: Frühstück, Kaffee, hausgemachte Kuchen und Desserts in warmer, editorialer Atmosphäre.',
   authors: [{ name: 'Rose Café Bremen' }],
-  icons: { icon: '/assets/img/favicon.svg', apple: '/assets/img/favicon.svg' },
+  icons: { icon: '/assets/img/icon.png', apple: '/assets/img/icon.png' },
   other: { 'geo.region': 'DE-HB', 'geo.placename': 'Bremen' },
 };
 

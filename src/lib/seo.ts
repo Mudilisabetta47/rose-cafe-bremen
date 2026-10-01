@@ -23,13 +23,13 @@ export function buildMetadata(opts: {
       title: opts.title,
       description: opts.description,
       url,
-      images: [{ url: '/assets/img/og-rose-cafe.svg', width: 1200, height: 630, alt: 'Rose Café Bremen' }],
+      images: [{ url: '/assets/img/logo.png', width: 1200, height: 1200, alt: 'Rose Café Bremen' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: opts.title,
       description: opts.description,
-      images: ['/assets/img/og-rose-cafe.svg'],
+      images: ['/assets/img/logo.png'],
     },
   };
 }
@@ -46,7 +46,7 @@ export function localBusinessSchema() {
     url: `${SITE_URL}/`,
     telephone: BIZ.phoneLink,
     email: BIZ.email,
-    image: `${SITE_URL}/assets/img/og-rose-cafe.svg`,
+    image: `${SITE_URL}/assets/img/logo.png`,
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',

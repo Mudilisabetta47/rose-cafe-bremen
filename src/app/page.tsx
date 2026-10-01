@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
 import { BrandStory } from '@/components/sections/BrandStory';
+import { SignatureRoseReveal } from '@/components/sections/SignatureRoseReveal';
 import { About } from '@/components/sections/About';
 import { MenuExperience } from '@/components/sections/MenuExperience';
 import { SignatureProduct } from '@/components/sections/SignatureProduct';
+import { InteriorStory } from '@/components/sections/InteriorStory';
 import { HorizontalJourney } from '@/components/sections/HorizontalJourney';
 import { Gallery } from '@/components/sections/Gallery';
 import { Instagram } from '@/components/sections/Instagram';
@@ -25,9 +27,10 @@ export const metadata: Metadata = buildMetadata({
 /* =====================================================================
    Die Seite als digitale Reise, nicht als Hero → 3 Cards → Footer:
 
-   FILM (Hero) → STORY (Brand Story) → TEXT (Über uns) → PRODUCT
-   (Food Story) → SIGNATURE → HORIZONTAL EXPERIENCE → ATMOSPHERE
-   (Gallery/Instagram) → REVIEWS → RESERVATION (Visit/FAQ) → FINAL CTA
+   INTRO (Hero) → BRAND (Story + Signature Rose) → FOOD (Menü +
+   Signature Product) → INTERIOR → HORIZONTAL EXPERIENCE → ATMOSPHERE
+   (Gallery/Instagram) → REVIEWS → LOCATION/RESERVATION (Visit/FAQ) →
+   FINAL CTA. Jede Phase bekommt einen eigenen visuellen Charakter.
    ===================================================================== */
 export default function HomePage() {
   return (
@@ -35,9 +38,11 @@ export default function HomePage() {
       <JsonLd data={[websiteSchema(), faqSchema(FAQS)]} />
       <Hero />
       <BrandStory />
+      <SignatureRoseReveal />
       <About />
       <MenuExperience />
       <SignatureProduct />
+      <InteriorStory />
       <HorizontalJourney />
       <Gallery />
       <Instagram />

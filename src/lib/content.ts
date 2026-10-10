@@ -20,11 +20,14 @@ export const BIZ = {
   phoneLink: '+4942189752323',
   /** TODO vor Livegang: echte E-Mail-Adresse eintragen (aktuell Platzhalter). */
   email: 'info@rose-cafe-bremen.de',
-  /** Laut Instagram-Profil des Cafés; Sonntag öffnet laut Google erst 10:00 – bitte prüfen. */
-  hours: [{ d: 'Dienstag – Sonntag', t: '09:00 – 19:00' }],
+  /** Öffnungszeiten laut Inhaber: Dienstag bis Sonntag, 10:00 – 18:00 Uhr. */
+  hours: [{ d: 'Dienstag – Sonntag', t: '10:00 – 18:00' }],
   instagram: '@rosecafe_bremen1',
   instagramHref: 'https://www.instagram.com/rosecafe_bremen1/',
 } as const;
+
+/** Öffnungszeiten als Daten (0 = Sonntag … 6 = Samstag), für Animation, Live-Status und Schema. */
+export const OPENING = { open: 10, close: 18, days: [2, 3, 4, 5, 6, 0] as number[] };
 
 export type NavItem = { label: string; href: string };
 

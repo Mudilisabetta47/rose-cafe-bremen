@@ -56,6 +56,14 @@ export function localBusinessSchema() {
       addressRegion: 'Bremen',
       addressCountry: 'DE',
     },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '10:00',
+        closes: '18:00',
+      },
+    ],
     servesCuisine: ['Café', 'Frühstück', 'Kuchen & Desserts'],
     sameAs: [BIZ.instagramHref],
   };

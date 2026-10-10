@@ -5,6 +5,7 @@ import { BIZ, FORM_ENDPOINT, PARTY_SIZES } from '@/lib/content';
 import { Reveal } from '@/components/ui/Reveal';
 import { Magnetic } from '@/components/ui/Magnetic';
 import { Slug } from '@/components/ui/Slug';
+import { OpeningHours } from './OpeningHours';
 
 /**
  * LOCATION · RESERVIERUNG · KONTAKT — gemeinsam als "Besuch uns"-Bereich,
@@ -64,14 +65,10 @@ export function Visit() {
               </a>
             </address>
 
-            <dl className="grid gap-2 border-t border-line pt-6 font-mono text-[.85rem]">
-              {BIZ.hours.map((h) => (
-                <div key={h.d} className="flex justify-between gap-4 text-fg-dim">
-                  <dt>{h.d}</dt>
-                  <dd className="text-ink">{h.t}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="border-t border-line pt-6">
+              <p className="eyebrow mb-5">Öffnungszeiten</p>
+              <OpeningHours />
+            </div>
           </div>
 
           <ReservationForm />

@@ -263,30 +263,42 @@ export type GalleryItem = {
 /** Fotos aus dem Google-Eintrag des Rose Café (public/assets/img/photos). */
 const P = '/assets/img/photos/';
 export const GALLERY: GalleryItem[] = [
-  { key: 'g1', src: P + 'interior-counter.jpg', alt: 'Tresen und Innenraum des Rose Café', caption: 'Der Tresen', size: 'lg', from: 'left' },
-  { key: 'g2', src: P + 'latte-macchiato.jpg', alt: 'Latte Macchiato und Cappuccino', caption: 'Kaffee', size: 'sm', from: 'right' },
+  { key: 'g1', src: P + 'interior-saeule.jpg', alt: 'Innenraum des Rose Café mit Tresen und Pendelleuchten', caption: 'Der Raum', size: 'lg', from: 'left' },
+  { key: 'g2', src: P + 'cappuccino-latte-art.jpg', alt: 'Cappuccino mit Latte Art', caption: 'Cappuccino', size: 'sm', from: 'right' },
   { key: 'g3', src: P + 'interior-fenster.jpg', alt: 'Fensterplätze im Rose Café', caption: 'Am Fenster', size: 'md', from: 'up' },
-  { key: 'g4', src: P + 'kuchen-cappuccino.jpg', alt: 'Kuchenstück mit Cappuccino', caption: 'Kuchen', size: 'sm', from: 'left' },
+  { key: 'g4', src: P + 'erdbeerkuchen.jpg', alt: 'Stück rosa Beerenkuchen', caption: 'Kuchen', size: 'sm', from: 'left' },
   { key: 'g5', src: P + 'fruehstueck.jpg', alt: 'Frühstücksplatte mit Rührei', caption: 'Frühstück', size: 'md', from: 'right' },
   { key: 'g6', src: P + 'aussenbereich.jpg', alt: 'Außenbereich des Rose Café', caption: 'Draußen sitzen', size: 'lg', from: 'up' },
   { key: 'g7', src: P + 'burrata-salat.jpg', alt: 'Burrata Salat mit Erdbeeren', caption: 'Burrata Salat', size: 'md', from: 'left' },
-  { key: 'g8', src: P + 'eiskaffee.jpg', alt: 'Eiskaffee mit Sahne und Erdbeere', caption: 'Eiskaffee', size: 'sm', from: 'right' },
+  { key: 'g8', src: P + 'waffel-cappuccino.jpg', alt: 'Waffel mit Puderzucker und Cappuccino', caption: 'Waffeln', size: 'sm', from: 'right' },
+  { key: 'g9', src: P + 'falafel-teller.jpg', alt: 'Falafel-Teller mit Hummus und Salat', caption: 'Falafel-Teller', size: 'lg', from: 'left' },
+  { key: 'g10', src: P + 'baiserkuchen.jpg', alt: 'Baiserkuchen mit Mandeln', caption: 'Hausgemachter Kuchen', size: 'sm', from: 'up' },
+  { key: 'g11', src: P + 'mezze-hummus.jpg', alt: 'Hummus, Oliven und Falafel', caption: 'Orientalisch', size: 'md', from: 'right' },
+  { key: 'g12', src: P + 'fassade.jpg', alt: 'Eingang des Rose Café in der Kirchbachstraße', caption: 'Kirchbachstraße 200', size: 'md', from: 'up' },
 ];
+
+/** Gerichte für die Vollbild-Showcase — Name und Preis 1:1 aus der Speisekarte. */
+export const FEATURED = [
+  { key: 'falafel', src: P + 'falafel-teller.jpg', alt: 'Falafel-Teller mit Hummus und Salat', label: 'Hauptgerichte', name: 'Falafel-Teller', price: '10,90 €', note: 'Mit Hummus und einem gemischten Salat serviert.', cat: 'hauptgerichte' },
+  { key: 'burrata', src: P + 'burrata-salat.jpg', alt: 'Burrata Salat mit Erdbeeren', label: 'Salate', name: 'Burrata Salat', price: '10,90 €', note: 'Serviert mit cremigem Burrata, frischem Rucola, Cherrytomaten, Balsamico-Dressing und knusprigem Brot.', cat: 'salate' },
+  { key: 'sucuk', src: P + 'sucuk-fruehstueck.jpg', alt: 'Orientalisches Frühstück mit Sucuk und Rührei', label: 'Orientalisches Frühstück', name: 'Omelette mit Sucuk', price: '12,90 €', note: 'Sucuk, Paprika und Tomaten, gebraten mit Eiern und Kräutern – serviert mit frischem Brot.', cat: 'orientalisch' },
+  { key: 'waffel', src: P + 'waffel-cappuccino.jpg', alt: 'Waffel mit Puderzucker und Cappuccino', label: 'Waffeln', name: 'Waffel mit Puderzucker', price: '4,50 €', note: 'Auch to go möglich.', cat: 'waffeln' },
+] as const;
 
 /** Foto je Speisekarten-Kategorie (nur wo ein echtes Foto existiert). */
 export const MENU_PHOTOS: Record<string, { src: string; alt: string }> = {
-  kaffee: { src: P + 'latte-macchiato.jpg', alt: 'Latte Macchiato und Cappuccino' },
+  kaffee: { src: P + 'cappuccino-latte-art.jpg', alt: 'Cappuccino mit Latte Art' },
+  heissgetraenke: { src: P + 'latte-torte-terrasse.jpg', alt: 'Latte Macchiato und Tortenstück auf der Terrasse' },
+  extras: { src: P + 'latte-glas.jpg', alt: 'Milchkaffee im Glas' },
   fruehstueck: { src: P + 'fruehstueck.jpg', alt: 'Frühstücksplatte mit Rührei' },
-  orientalisch: { src: P + 'orientalisches-fruehstueck.jpg', alt: 'Orientalisches Frühstück mit Rührei, Käse und Oliven' },
+  orientalisch: { src: P + 'sucuk-fruehstueck.jpg', alt: 'Orientalisches Frühstück mit Sucuk und Rührei' },
+  hauptgerichte: { src: P + 'falafel-teller.jpg', alt: 'Falafel-Teller mit Hummus und Salat' },
   salate: { src: P + 'burrata-salat.jpg', alt: 'Burrata Salat mit Erdbeeren' },
-  suesses: { src: P + 'kuchen-cappuccino.jpg', alt: 'Kuchenstück mit Cappuccino' },
-  waffeln: { src: P + 'eiskaffee.jpg', alt: 'Eiskaffee mit Sahne und Erdbeere' },
-  brunch: { src: P + 'interior-fenster.jpg', alt: 'Innenraum des Rose Café' },
-  veranstaltungen: { src: P + 'interior-fenster.jpg', alt: 'Innenraum des Rose Café' },
-  hauptgerichte: { src: P + 'interior-counter.jpg', alt: 'Tresen im Rose Café' },
-  heissgetraenke: { src: P + 'kuchen-cappuccino.jpg', alt: 'Cappuccino und Kuchen' },
-  extras: { src: P + 'latte-macchiato.jpg', alt: 'Kaffee' },
+  suesses: { src: P + 'erdbeerkuchen.jpg', alt: 'Stück rosa Beerenkuchen' },
+  waffeln: { src: P + 'waffel-espresso.jpg', alt: 'Waffel mit Erdbeeren und Espresso' },
   softdrinks: { src: P + 'aussenbereich.jpg', alt: 'Außenbereich des Rose Café' },
+  brunch: { src: P + 'mezze-hummus.jpg', alt: 'Hummus, Oliven und Falafel' },
+  veranstaltungen: { src: P + 'interior-vitrine.jpg', alt: 'Tresen und Kuchenvitrine im Rose Café' },
 };
 
 /* =====================================================================

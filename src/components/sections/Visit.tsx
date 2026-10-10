@@ -27,6 +27,13 @@ export function Visit() {
               </Reveal>
             </div>
 
+            <Reveal mode="mask">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px]" data-cursor="media" data-cursor-label="VIEW">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/assets/img/photos/fassade.jpg" alt="Eingang des Rose Café in der Kirchbachstraße 200" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover object-top" />
+              </div>
+            </Reveal>
+
             <Reveal mode="soft" delay={80}>
               <div className="stage-radial-map relative aspect-[4/3] w-full overflow-hidden rounded-[22px]" style={{ background: 'radial-gradient(80% 70% at 50% 45%,#efe3d3,#e2d3bc 80%)' }}>
                 <svg viewBox="0 0 300 220" className="h-full w-full" aria-hidden="true">

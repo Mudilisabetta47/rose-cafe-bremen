@@ -3,6 +3,9 @@ import { Hero } from '@/components/sections/Hero';
 import { BrandStory } from '@/components/sections/BrandStory';
 import { SignatureRoseReveal } from '@/components/sections/SignatureRoseReveal';
 import { About } from '@/components/sections/About';
+import { PhotoMarquee } from '@/components/sections/PhotoMarquee';
+import { CafeInMotion } from '@/components/sections/CafeInMotion';
+import { FoodShowcase } from '@/components/sections/FoodShowcase';
 import { MenuExperience } from '@/components/sections/MenuExperience';
 import { SignatureProduct } from '@/components/sections/SignatureProduct';
 import { InteriorStory } from '@/components/sections/InteriorStory';
@@ -40,7 +43,10 @@ export default function HomePage() {
       <BrandStory />
       <SignatureRoseReveal />
       <About />
+      <PhotoMarquee />
+      <CafeInMotion />
       <MenuExperience />
+      <FoodShowcase />
       <SignatureProduct />
       <InteriorStory />
       <HorizontalJourney />

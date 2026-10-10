@@ -1,7 +1,14 @@
 import { BIZ } from '@/lib/content';
 import { Reveal } from '@/components/ui/Reveal';
 
-const TONES = ['#b8636f', '#c9a463', '#7d2f3a', '#8d7a6d', '#b8636f', '#c9a463'];
+const SHOTS = [
+  ['cappuccino-latte-art', 'Cappuccino mit Latte Art'],
+  ['waffel-cappuccino', 'Waffel mit Cappuccino'],
+  ['erdbeerkuchen', 'Rosa Beerenkuchen'],
+  ['falafel-teller', 'Falafel-Teller'],
+  ['latte-torte-terrasse', 'Latte Macchiato mit Torte'],
+  ['burrata-salat', 'Burrata Salat'],
+];
 
 export function Instagram() {
   return (
@@ -26,14 +33,25 @@ export function Instagram() {
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {TONES.map((tone, i) => (
-            <Reveal key={i} mode="scale" delay={i * 60}>
-              <div
-                className="aspect-square cursor-none overflow-hidden rounded-[14px]"
+          {SHOTS.map(([file, alt], i) => (
+            <Reveal key={file} mode="scale" delay={i * 60}>
+              <a
+                href={BIZ.instagramHref}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative block aspect-square cursor-none overflow-hidden rounded-[14px]"
                 data-cursor="media"
-                data-cursor-label="VIEW"
-                style={{ background: `linear-gradient(150deg, ${tone}44, ${tone}11)` }}
-              />
+                data-cursor-label="INSTAGRAM"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/assets/img/photos/${file}.jpg`}
+                  alt={alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-cinematic group-hover:scale-[1.08]"
+                />
+              </a>
             </Reveal>
           ))}
         </div>

@@ -25,6 +25,8 @@ export function BrandStory() {
   const decorSlowY = useTransform(scrollYProgress, [0, 1], ['-6%', '10%']);
   const decorFastY = useTransform(scrollYProgress, [0, 1], ['4%', '-16%']);
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '14%']);
+  const photoY = useTransform(scrollYProgress, [0, 1], ['12%', '-12%']);
+  const photoScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.2]);
 
   return (
     <section aria-labelledby="story-h" className="relative bg-cream">
@@ -50,6 +52,24 @@ export function BrandStory() {
             className="pointer-events-none absolute -right-[6%] bottom-[10%] h-[30vmin] w-[30vmin] rounded-full opacity-[.4]"
             style={{ y: reduced ? 0 : decorFastY, background: 'radial-gradient(circle at 60% 40%, rgba(201,164,99,.32), transparent 70%)' }}
           />
+
+          {!reduced && (
+            <motion.div
+              aria-hidden="true"
+              className="absolute bottom-[8%] right-[var(--pad)] top-[14%] hidden w-[min(34vw,460px)] overflow-hidden rounded-[26px] md:block"
+              style={{ y: photoY }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <motion.img
+                src="/assets/img/photos/interior-saeule.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+                style={{ scale: photoScale }}
+              />
+            </motion.div>
+          )}
 
           <div className="shell flex h-full flex-col justify-center py-[var(--section-y)]">
             <p className="eyebrow mb-8">Unsere Geschichte</p>

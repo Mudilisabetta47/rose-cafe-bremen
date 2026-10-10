@@ -23,6 +23,16 @@ export function FinalCta() {
           className={`story__stage stage-retreat grid place-items-center text-center ${reduced ? 'relative h-auto py-[var(--section-y)]' : ''}`}
           style={reduced ? undefined : { scale, borderRadius: radius }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/img/photos/interior-fenster.jpg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-35"
+          />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(20,15,13,.7),rgba(20,15,13,.55)_50%,rgba(20,15,13,.85))]" />
           <motion.div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"

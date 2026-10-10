@@ -31,6 +31,13 @@ export function About() {
             </Reveal>
           </div>
 
+          <div className="grid content-start gap-5">
+          <Reveal mode="mask">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[22px]" data-cursor="media" data-cursor-label="VIEW">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/assets/img/photos/interior-vitrine.jpg" alt="Tresen und Kuchenvitrine im Rose Café" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+            </div>
+          </Reveal>
           <ul className="grid gap-5 content-start">
             {POINTS.map((p, i) => (
               <Reveal key={p.title} as="li" mode="up" delay={i * 90}>
@@ -41,6 +48,7 @@ export function About() {
               </Reveal>
             ))}
           </ul>
+          </div>
         </div>
       </div>
     </section>

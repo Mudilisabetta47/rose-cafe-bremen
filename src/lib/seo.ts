@@ -56,7 +56,6 @@ export function localBusinessSchema() {
       addressRegion: 'Bremen',
       addressCountry: 'DE',
     },
-    geo: { '@type': 'GeoCoordinates', latitude: BIZ.lat, longitude: BIZ.lng },
     servesCuisine: ['Café', 'Frühstück', 'Kuchen & Desserts'],
     sameAs: [BIZ.instagramHref],
   };

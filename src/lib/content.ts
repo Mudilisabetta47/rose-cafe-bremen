@@ -12,26 +12,18 @@ export const SITE_URL = 'https://rose-cafe-bremen.de';
 export const BIZ = {
   name: 'Rose Café Bremen',
   short: 'ROSE CAFÉ',
-  street: '[Straße Hausnummer]',
-  zip: '[PLZ]',
+  street: 'Kirchbachstraße 200',
+  zip: '28211',
   city: 'Bremen',
   district: 'Schwachhausen',
-  /** TODO vor Livegang: echte Telefonnummer eintragen. */
-  phoneDisplay: '[Telefonnummer]',
-  phoneLink: '+49000000000',
-  /** TODO vor Livegang: echte E-Mail-Adresse eintragen. */
+  phoneDisplay: '0421 89752323',
+  phoneLink: '+4942189752323',
+  /** TODO vor Livegang: echte E-Mail-Adresse eintragen (aktuell Platzhalter). */
   email: 'info@rose-cafe-bremen.de',
-  /** TODO vor Livegang: echte Öffnungszeiten eintragen. */
-  hours: [
-    { d: 'Montag – Freitag', t: '[Uhrzeit]' },
-    { d: 'Samstag', t: '[Uhrzeit]' },
-    { d: 'Sonntag', t: '[Uhrzeit]' },
-  ],
-  instagram: '@rosecafe.bremen',
-  instagramHref: 'https://instagram.com',
-  /** TODO vor Livegang: echte Koordinaten eintragen. */
-  lat: 53.0793,
-  lng: 8.8017,
+  /** Laut Instagram-Profil des Cafés; Sonntag öffnet laut Google erst 10:00 – bitte prüfen. */
+  hours: [{ d: 'Dienstag – Sonntag', t: '09:00 – 19:00' }],
+  instagram: '@rosecafe_bremen1',
+  instagramHref: 'https://www.instagram.com/rosecafe_bremen1/',
 } as const;
 
 export type NavItem = { label: string; href: string };
@@ -261,22 +253,41 @@ export const SIGNATURE = {
 
 export type GalleryItem = {
   key: string;
-  tone: 'interior' | 'window' | 'cup' | 'pastry' | 'flowers' | 'people' | 'counter' | 'exterior';
+  src: string;
+  alt: string;
   caption: string;
   size: 'sm' | 'md' | 'lg';
   from: 'left' | 'right' | 'up';
 };
 
+/** Fotos aus dem Google-Eintrag des Rose Café (public/assets/img/photos). */
+const P = '/assets/img/photos/';
 export const GALLERY: GalleryItem[] = [
-  { key: 'g1', tone: 'interior', caption: 'Innenraum, Vormittagslicht', size: 'lg', from: 'left' },
-  { key: 'g2', tone: 'cup', caption: 'Rose Latte', size: 'sm', from: 'right' },
-  { key: 'g3', tone: 'window', caption: 'Fensterplatz', size: 'md', from: 'up' },
-  { key: 'g4', tone: 'pastry', caption: 'Gebäck des Tages', size: 'sm', from: 'left' },
-  { key: 'g5', tone: 'flowers', caption: 'Rosen am Tresen', size: 'md', from: 'right' },
-  { key: 'g6', tone: 'counter', caption: 'Der Tresen', size: 'lg', from: 'up' },
-  { key: 'g7', tone: 'people', caption: 'Ein ruhiger Nachmittag', size: 'md', from: 'left' },
-  { key: 'g8', tone: 'exterior', caption: 'Schaufenster, Bremen', size: 'sm', from: 'right' },
+  { key: 'g1', src: P + 'interior-counter.jpg', alt: 'Tresen und Innenraum des Rose Café', caption: 'Der Tresen', size: 'lg', from: 'left' },
+  { key: 'g2', src: P + 'latte-macchiato.jpg', alt: 'Latte Macchiato und Cappuccino', caption: 'Kaffee', size: 'sm', from: 'right' },
+  { key: 'g3', src: P + 'interior-fenster.jpg', alt: 'Fensterplätze im Rose Café', caption: 'Am Fenster', size: 'md', from: 'up' },
+  { key: 'g4', src: P + 'kuchen-cappuccino.jpg', alt: 'Kuchenstück mit Cappuccino', caption: 'Kuchen', size: 'sm', from: 'left' },
+  { key: 'g5', src: P + 'fruehstueck.jpg', alt: 'Frühstücksplatte mit Rührei', caption: 'Frühstück', size: 'md', from: 'right' },
+  { key: 'g6', src: P + 'aussenbereich.jpg', alt: 'Außenbereich des Rose Café', caption: 'Draußen sitzen', size: 'lg', from: 'up' },
+  { key: 'g7', src: P + 'burrata-salat.jpg', alt: 'Burrata Salat mit Erdbeeren', caption: 'Burrata Salat', size: 'md', from: 'left' },
+  { key: 'g8', src: P + 'eiskaffee.jpg', alt: 'Eiskaffee mit Sahne und Erdbeere', caption: 'Eiskaffee', size: 'sm', from: 'right' },
 ];
+
+/** Foto je Speisekarten-Kategorie (nur wo ein echtes Foto existiert). */
+export const MENU_PHOTOS: Record<string, { src: string; alt: string }> = {
+  kaffee: { src: P + 'latte-macchiato.jpg', alt: 'Latte Macchiato und Cappuccino' },
+  fruehstueck: { src: P + 'fruehstueck.jpg', alt: 'Frühstücksplatte mit Rührei' },
+  orientalisch: { src: P + 'orientalisches-fruehstueck.jpg', alt: 'Orientalisches Frühstück mit Rührei, Käse und Oliven' },
+  salate: { src: P + 'burrata-salat.jpg', alt: 'Burrata Salat mit Erdbeeren' },
+  suesses: { src: P + 'kuchen-cappuccino.jpg', alt: 'Kuchenstück mit Cappuccino' },
+  waffeln: { src: P + 'eiskaffee.jpg', alt: 'Eiskaffee mit Sahne und Erdbeere' },
+  brunch: { src: P + 'interior-fenster.jpg', alt: 'Innenraum des Rose Café' },
+  veranstaltungen: { src: P + 'interior-fenster.jpg', alt: 'Innenraum des Rose Café' },
+  hauptgerichte: { src: P + 'interior-counter.jpg', alt: 'Tresen im Rose Café' },
+  heissgetraenke: { src: P + 'kuchen-cappuccino.jpg', alt: 'Cappuccino und Kuchen' },
+  extras: { src: P + 'latte-macchiato.jpg', alt: 'Kaffee' },
+  softdrinks: { src: P + 'aussenbereich.jpg', alt: 'Außenbereich des Rose Café' },
+};
 
 /* =====================================================================
    BEWERTUNGEN — Platzhalter. Vor Livegang durch echte, zitierfähige

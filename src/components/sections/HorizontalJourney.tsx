@@ -3,13 +3,14 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
+const P = '/assets/img/photos/';
 const STOPS = [
-  { key: 'coffee', label: 'Kaffee', tone: '#c9a463' },
-  { key: 'breakfast', label: 'Frühstück', tone: '#e9c9c9' },
-  { key: 'cake', label: 'Kuchen', tone: '#b8636f' },
-  { key: 'dessert', label: 'Dessert', tone: '#7d2f3a' },
-  { key: 'atmosphere', label: 'Atmosphäre', tone: '#8d7a6d' },
-  { key: 'rose', label: 'Rose Café', tone: '#b8636f' },
+  { key: 'coffee', label: 'Kaffee', tone: '#c9a463', src: P + 'latte-macchiato.jpg', alt: 'Latte Macchiato und Cappuccino' },
+  { key: 'breakfast', label: 'Frühstück', tone: '#e9c9c9', src: P + 'fruehstueck.jpg', alt: 'Frühstücksplatte mit Rührei' },
+  { key: 'cake', label: 'Kuchen', tone: '#b8636f', src: P + 'kuchen-cappuccino.jpg', alt: 'Kuchenstück mit Cappuccino' },
+  { key: 'dessert', label: 'Eiskaffee', tone: '#7d2f3a', src: P + 'eiskaffee.jpg', alt: 'Eiskaffee mit Sahne und Erdbeere' },
+  { key: 'atmosphere', label: 'Atmosphäre', tone: '#8d7a6d', src: P + 'interior-fenster.jpg', alt: 'Fensterplätze im Rose Café' },
+  { key: 'rose', label: 'Rose Café', tone: '#b8636f', src: P + 'aussenbereich.jpg', alt: 'Außenbereich des Rose Café' },
 ];
 
 /**
@@ -58,11 +59,9 @@ export function HorizontalJourney() {
 function Stop({ stop, className }: { stop: (typeof STOPS)[number]; className?: string }) {
   return (
     <div className={className}>
-      <div className="mb-6 aspect-[4/3] w-full overflow-hidden rounded-[24px]" style={{ background: `linear-gradient(150deg, ${stop.tone}33, ${stop.tone}0d)` }}>
-        <svg viewBox="0 0 200 150" className="h-full w-full" aria-hidden="true">
-          <circle cx="100" cy="72" r="46" fill={stop.tone} fillOpacity=".28" />
-          <circle cx="100" cy="72" r="26" fill={stop.tone} fillOpacity=".5" />
-        </svg>
+      <div className="relative mb-6 aspect-[4/3] w-full overflow-hidden rounded-[24px]" style={{ background: stop.tone + '33' }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={stop.src} alt={stop.alt} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
       </div>
       <p className="font-mono text-[.62rem] uppercase tracking-[.24em] text-fg-mute">Station</p>
       <h3 className="display mt-1 text-h3">{stop.label}</h3>

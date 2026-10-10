@@ -2,18 +2,8 @@
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useState } from 'react';
-import { MENU_CATEGORIES, type MenuCategory } from '@/lib/content';
-import { Reveal } from '@/components/ui/Reveal';
+import { MENU_CATEGORIES, MENU_PHOTOS } from '@/lib/content';
 import { Slug } from '@/components/ui/Slug';
-
-const TONE_COLORS: Record<MenuCategory['tone'], { a: string; b: string }> = {
-  dawn: { a: '#e9c9c9', b: '#c9a463' },
-  roast: { a: '#c9a463', b: '#7d2f3a' },
-  sugar: { a: '#b8636f', b: '#e9c9c9' },
-  signature: { a: '#b8636f', b: '#7d2f3a' },
-  green: { a: '#9caf7c', b: '#5a6a45' },
-  drink: { a: '#7fa6c0', b: '#c9a463' },
-};
 
 /**
  * INTERAKTIVE SPEISEKARTE — kein PDF-Abbild, sondern eine geführte
@@ -30,7 +20,7 @@ export function MenuExperience() {
   const [active, setActive] = useState(0);
   const reduced = useReducedMotion();
   const cat = MENU_CATEGORIES[active];
-  const tone = TONE_COLORS[cat.tone];
+  const photo = MENU_PHOTOS[cat.key];
 
   return (
     <section id="food" className="section bg-night" aria-labelledby="menu-h">
@@ -81,13 +71,37 @@ export function MenuExperience() {
                 exit={reduced ? { opacity: 0 } : { opacity: 0, x: -28 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="mb-8 grid grid-cols-[auto_1fr] items-center gap-6">
-                  <CategoryGlyph toneA={tone.a} toneB={tone.b} />
-                  <div>
+                {photo && (
+                  <motion.figure
+                    className="relative mb-8 aspect-[16/9] overflow-hidden rounded-[22px] bg-white/5"
+                    initial={reduced ? false : { clipPath: 'inset(0 0 100% 0)' }}
+                    animate={{ clipPath: 'inset(0 0 0% 0)' }}
+                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                    data-cursor="media"
+                    data-cursor-label="VIEW"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <motion.img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      initial={reduced ? false : { scale: 1.18 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night/70 via-transparent to-transparent" />
+                    <figcaption className="absolute bottom-5 left-6 right-6">
+                      <p className="font-mono text-[.66rem] uppercase tracking-[.22em] text-bone/60">Kategorie {cat.num}</p>
+                      <h3 className="display text-[clamp(1.8rem,3.6vw,2.8rem)] text-bone">{cat.title}</h3>
+                    </figcaption>
+                  </motion.figure>
+                )}
+                {!photo && (
+                  <div className="mb-8">
                     <p className="font-mono text-[.66rem] uppercase tracking-[.22em] text-bone/40">Kategorie {cat.num}</p>
                     <h3 className="display text-[clamp(1.6rem,3.2vw,2.4rem)] text-bone">{cat.title}</h3>
                   </div>
-                </div>
+                )}
 
                 {cat.intro && <p className="mb-6 max-w-[58ch] text-lead text-bone/70">{cat.intro}</p>}
 
@@ -118,24 +132,5 @@ export function MenuExperience() {
         </div>
       </div>
     </section>
-  );
-}
-
-/** Gemalte Kategorie-Illustration statt Foto — Platzhalter bis echtes Bildmaterial vorliegt. */
-function CategoryGlyph({ toneA, toneB }: { toneA: string; toneB: string }) {
-  return (
-    <Reveal mode="scale" className="flex-none">
-      <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
-        <defs>
-          <linearGradient id={`mg-${toneA}-${toneB}`} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor={toneA} />
-            <stop offset="1" stopColor={toneB} />
-          </linearGradient>
-        </defs>
-        <circle cx="32" cy="32" r="30" fill={`url(#mg-${toneA}-${toneB})`} fillOpacity=".22" />
-        <circle cx="32" cy="32" r="18" fill={`url(#mg-${toneA}-${toneB})`} fillOpacity=".55" />
-        <circle cx="32" cy="32" r="6" fill={toneA} />
-      </svg>
-    </Reveal>
   );
 }

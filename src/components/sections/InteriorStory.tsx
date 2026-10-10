@@ -12,12 +12,13 @@ import { useRef } from 'react';
    am schnellsten) erzeugen die Tiefe — kein DOM-perspective-Trick.
    ===================================================================== */
 
+const P = '/assets/img/photos/';
 const PHASES = [
-  { key: 'light', label: 'Licht', text: 'Vormittagslicht fällt schräg durchs Fenster und legt sich auf Holz und Porzellan.' },
-  { key: 'table', label: 'Tisch', text: 'Jeder Tisch hat seinen eigenen Platz — nah genug für Gespräche, Raum genug zum Ankommen.' },
-  { key: 'coffee', label: 'Kaffee', text: 'Der Duft von frisch gemahlenem Kaffee liegt im Raum, bevor die erste Tasse serviert wird.' },
-  { key: 'people', label: 'Menschen', text: 'Gäste, die bleiben statt nur vorbeizukommen — das ist der eigentliche Charakter des Hauses.' },
-  { key: 'mood', label: 'Atmosphäre', text: 'Warme Töne, leises Geschirrklirren, Rosen auf dem Tresen. Mehr als ein Café.' },
+  { key: 'light', src: P + 'interior-fenster.jpg', alt: 'Fensterplätze im Rose Café', label: 'Licht', text: 'Vormittagslicht fällt schräg durchs Fenster und legt sich auf Holz und Porzellan.' },
+  { key: 'table', src: P + 'kuchen-cappuccino.jpg', alt: 'Kuchen und Cappuccino auf dem Tisch', label: 'Tisch', text: 'Jeder Tisch hat seinen eigenen Platz — nah genug für Gespräche, Raum genug zum Ankommen.' },
+  { key: 'coffee', src: P + 'latte-macchiato.jpg', alt: 'Latte Macchiato', label: 'Kaffee', text: 'Der Duft von frisch gemahlenem Kaffee liegt im Raum, bevor die erste Tasse serviert wird.' },
+  { key: 'people', src: P + 'interior-counter.jpg', alt: 'Tresen im Rose Café', label: 'Menschen', text: 'Gäste, die bleiben statt nur vorbeizukommen — das ist der eigentliche Charakter des Hauses.' },
+  { key: 'mood', src: P + 'aussenbereich.jpg', alt: 'Außenbereich des Rose Café', label: 'Atmosphäre', text: 'Warme Töne, leises Geschirrklirren, Rosen auf dem Tresen. Mehr als ein Café.' },
 ];
 
 export function InteriorStory() {
@@ -103,16 +104,22 @@ function PhasePanel({
 }) {
   return (
     <motion.div
-      className={reduced ? 'shell grid gap-6 border-t border-line pt-14' : 'shell absolute inset-0 grid content-center gap-6'}
+      className={reduced ? 'shell grid gap-6 border-t border-line pt-14 lg:grid-cols-2 lg:items-center' : 'shell absolute inset-0 grid content-center gap-8 lg:grid-cols-2 lg:items-center'}
       style={reduced ? undefined : { opacity, pointerEvents: 'none' }}
     >
-      <p className="font-mono text-[.66rem] uppercase tracking-[.24em] text-rose-deep">
-        {String(index + 1).padStart(2, '0')} · Interior
-      </p>
-      <h3 className="display text-[clamp(2.2rem,6vw,4.2rem)]" style={{ maxWidth: '12ch' }}>
-        {phase.label}
-      </h3>
-      <p className="max-w-[48ch] text-lead">{phase.text}</p>
+      <div className="grid gap-6">
+        <p className="font-mono text-[.66rem] uppercase tracking-[.24em] text-rose-deep">
+          {String(index + 1).padStart(2, '0')} · Interior
+        </p>
+        <h3 className="display text-[clamp(2.2rem,6vw,4.2rem)]" style={{ maxWidth: '12ch' }}>
+          {phase.label}
+        </h3>
+        <p className="max-w-[48ch] text-lead">{phase.text}</p>
+      </div>
+      <div className="relative order-first aspect-[4/3] max-h-[34vh] overflow-hidden rounded-[22px] lg:order-none lg:max-h-[62vh] lg:aspect-[4/5]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={phase.src} alt={phase.alt} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+      </div>
     </motion.div>
   );
 }
